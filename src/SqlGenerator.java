@@ -29,7 +29,7 @@ public class SqlGenerator<T> {
      * @return the SQL "CREATE TABLE" statement as a string.
      * @throws IllegalArgumentException if the class is not annotated with {@link Table}.
      */
-    public String create() {
+    public String generateCreate() {
         if (!type.isAnnotationPresent(Table.class)) {
             throw new IllegalArgumentException("Class is not annotated with @Table");
         }
@@ -59,7 +59,7 @@ public class SqlGenerator<T> {
      * @throws IllegalAccessException if a field is inaccessible during reflection.
      * @throws IllegalArgumentException if the class is not annotated with {@link Table}.
      */
-    public String insert(T instance) throws IllegalAccessException {
+    public String generateInsert(T instance) throws IllegalAccessException {
         if (!type.isAnnotationPresent(Table.class)) {
             throw new IllegalArgumentException("Class is not annotated with @Table");
         }
@@ -94,7 +94,7 @@ public class SqlGenerator<T> {
      * @throws IllegalAccessException if a field is inaccessible during reflection.
      * @throws IllegalArgumentException if the class is not annotated with {@link Table}.
      */
-    public String update(T instance, String condition) throws IllegalAccessException {
+    public String generateUpdate(T instance, String condition) throws IllegalAccessException {
         if (!type.isAnnotationPresent(Table.class)) {
             throw new IllegalArgumentException("Class is not annotated with @Table");
         }
@@ -124,7 +124,7 @@ public class SqlGenerator<T> {
      * @return the SQL "DELETE FROM" statement as a string.
      * @throws IllegalArgumentException if the class is not annotated with {@link Table}.
      */
-    public String delete(String condition) {
+    public String generateDelete(String condition) {
         if (!type.isAnnotationPresent(Table.class)) {
             throw new IllegalArgumentException("Class is not annotated with @Table");
         }
